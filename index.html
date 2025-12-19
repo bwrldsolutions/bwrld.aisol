@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BWRLD Solutions</title>
+
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --bg-soft: rgba(255,255,255,0.06);
+      --text: #eaeaf0;
+      --muted: #a0a3bd;
+      --accent: #4fd1ff;
+      --accent-2: #9b6bff;
+      --glow: 0 0 25px rgba(79,209,255,0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #141a2e, var(--bg));
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      background: rgba(11,15,26,0.75);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      align-items: center;
+    }
+
+    nav ul li {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    nav ul li:hover {
+      color: var(--text);
+    }
+
+    .nav-btn {
+      padding: 10px 18px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #000;
+      font-weight: 600;
+      box-shadow: var(--glow);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding: 0 8%;
+      background:
+        radial-gradient(circle at 70% 30%, rgba(155,107,255,0.15), transparent 60%),
+        radial-gradient(circle at 30% 70%, rgba(79,209,255,0.15), transparent 60%);
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 14px 26px;
+      border-radius: 40px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #000;
+      font-weight: 600;
+      box-shadow: var(--glow);
+    }
+
+    .btn-secondary {
+      padding: 14px 26px;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--text);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 100px 8%;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 50px;
+    }
+
+    /* SERVICES */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--bg-soft);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.35s, box-shadow 0.35s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--glow);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* AI HIGHLIGHT */
+    .ai-highlight {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+
+    .ai-box {
+      background: linear-gradient(
+        135deg,
+        rgba(79,209,255,0.15),
+        rgba(155,107,255,0.15)
+      );
+      border-radius: 24px;
+      padding: 40px;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: var(--glow);
+    }
+
+    .ai-box ul {
+      margin-top: 20px;
+      list-style: none;
+    }
+
+    .ai-box li {
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background:
+        radial-gradient(circle at center, rgba(79,209,255,0.2), transparent 65%);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .cta h2 {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 8%;
+      background: #070a14;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">BWRLD Solutions</div>
+    <ul>
+      <li>Solutions</li>
+      <li>AI</li>
+      <li>Products</li>
+      <li>About</li>
+      <li>Contact</li>
+      <li><a class="nav-btn" href="#">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Building the Future with Software & AI</h1>
+      <p>
+        We create powerful apps, modern websites, and intelligent AI platforms
+        designed to scale with your vision.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#">Start a Project</a>
+        <a class="btn-secondary" href="#">View Our Solutions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section>
+    <h2 class="section-title">What We Do</h2>
+    <p class="section-sub">
+      End-to-end digital solutions built with performance, security, and growth in mind.
+    </p>
+
+    <div class="services">
+      <div class="card">
+        <h3>App Development</h3>
+        <p>Custom mobile and desktop applications built for speed and reliability.</p>
+      </div>
+      <div class="card">
+        <h3>Web Platforms</h3>
+        <p>Modern, responsive websites with clean design and scalable architecture.</p>
+      </div>
+      <div class="card">
+        <h3>AI Platforms</h3>
+        <p>Tailored AI systems, automation tools, and intelligent workflows.</p>
+      </div>
+      <div class="card">
+        <h3>AI Products</h3>
+        <p>Ready-to-use AI tools, APIs, and smart digital solutions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI HIGHLIGHT -->
+  <section>
+    <div class="ai-highlight">
+      <div>
+        <h2 class="section-title">AI That Actually Works</h2>
+        <p class="section-sub">
+          We focus on practical, business-ready AI — not buzzwords.
+        </p>
+      </div>
+      <div class="ai-box">
+        <ul>
+          <li>✔ Custom-trained AI models</li>
+          <li>✔ Automation & APIs</li>
+          <li>✔ Scalable infrastructure</li>
+          <li>✔ Ethical & responsible design</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Let’s Build Something Powerful</h2>
+    <div class="hero-actions" style="justify-content:center;">
+      <a class="btn-primary" href="#">Get a Quote</a>
+      <a class="btn-secondary" href="#">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>© BWRLD Solutions</div>
+    <div>Contact: tech@bwrld.uk</div>
+  </footer>
+
+</body>
+</html>
